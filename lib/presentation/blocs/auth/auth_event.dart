@@ -7,6 +7,7 @@ abstract class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
+/// For check email when sign up
 class AuthCheckEmail extends AuthEvent {
   final String email;
   const AuthCheckEmail(this.email);
@@ -15,6 +16,7 @@ class AuthCheckEmail extends AuthEvent {
   List<Object> get props => [email];
 }
 
+/// For SignUp new user
 class AuthRegister extends AuthEvent  {
   final AuthRegisterEntity data;
 
@@ -24,6 +26,7 @@ class AuthRegister extends AuthEvent  {
   List<Object> get props => [data];
 }
 
+/// For SignIn user
 class AuthLogin extends AuthEvent  {
   final SignInFormModel data;
 
@@ -33,6 +36,7 @@ class AuthLogin extends AuthEvent  {
   List<Object> get props => [data];
 }
 
+/// Get Current User
 class AuthGetCurrentUser extends AuthEvent {}
 
 class AuthUpdateUser extends AuthEvent {
@@ -43,6 +47,7 @@ class AuthUpdateUser extends AuthEvent {
   List<Object> get props => [data];
 }
 
+/// For update pin
 class AuthUpdatePin extends AuthEvent {
   final String oldPin;
   final String newPin;
@@ -56,8 +61,10 @@ class AuthUpdatePin extends AuthEvent {
   List<Object> get props => [oldPin, newPin];
 }
 
+/// For logout
 class AuthLogout extends AuthEvent {}
 
+/// For update balance
 class AuthUpdateBalance extends AuthEvent {
   final int amount;
   const AuthUpdateBalance(this.amount);

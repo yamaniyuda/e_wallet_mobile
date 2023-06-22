@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:e_wallet_mobile/domain/entities/auth_entity.dart';
+import 'package:e_wallet_mobile/domain/entities/user_entity.dart';
 import 'package:e_wallet_mobile/models/sign_in_form_model.dart';
 import 'package:e_wallet_mobile/models/sign_up_form_model.dart';
 import 'package:e_wallet_mobile/models/user_model.dart';
@@ -23,7 +25,7 @@ class AuthService {
     }
   }
 
-  Future<UserModel> register(SignUpFormModel data) async {
+  Future<UserEntity> register(AuthRegisterEntity data) async {
     try {
       final res = await http.post(
         Uri.parse("$baseUrl/register"),
@@ -31,7 +33,7 @@ class AuthService {
       );
 
       if (res.statusCode == 200) {
-        UserModel user = UserModel.fromJson(jsonDecode(res.body));
+        AuthEntity user = UserModel.fromJson(jsonDecode(res.body));
         user.copyWith(
           password: data.password
         );
@@ -41,8 +43,6 @@ class AuthService {
         throw jsonDecode(res.body)["message"];
       }
     } catch (e, stacktrace) {
-      print(stacktrace);
-      print(e);
       rethrow;
     }
   }
@@ -97,8 +97,6 @@ class AuthService {
        await storage.write(key: "token", value: user.token);
        await storage.write(key: "email", value: user.email);
        await storage.write(key: "password", value: user.password);
-       print("masuk");
-       print(user.email);
     } catch (e) {
       rethrow;
     }

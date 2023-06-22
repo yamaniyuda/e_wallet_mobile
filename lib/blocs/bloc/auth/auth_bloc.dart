@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:e_wallet_mobile/domain/entities/auth_entity.dart';
+import 'package:e_wallet_mobile/domain/entities/user_entity.dart';
 import 'package:e_wallet_mobile/models/sign_in_form_model.dart';
 import 'package:e_wallet_mobile/models/sign_up_form_model.dart';
 import 'package:e_wallet_mobile/models/user_model.dart';
@@ -40,26 +42,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         }
       }
 
-      if (event is AuthLogin) {
-        try {
-          emit(AuthLoading());
-          final user = await AuthService().login(event.data);
-          emit(AuthSuccess(user));
-        } catch (e) {
-          emit(AuthFailed(e.toString()));
-        }
-      }
+      // if (event is AuthLogin) {
+      //   try {
+      //     emit(AuthLoading());
+      //     final user = await AuthService().login(event.data);
+      //     emit(AuthSuccess(user));
+      //   } catch (e) {
+      //     emit(AuthFailed(e.toString()));
+      //   }
+      // }
 
-      if (event is  AuthGetCurrentUser) {
-        try {
-          emit(AuthLoading());
-          final SignInFormModel data = await AuthService().getCredentialFromLocal();
-          final UserModel user = await AuthService().login(data);
-          emit(AuthSuccess(user));
-        } catch (e) {
-          emit(AuthFailed(e.toString()));
-        }
-      }
+      // if (event is  AuthGetCurrentUser) {
+      //   try {
+      //     emit(AuthLoading());
+      //     final SignInFormModel data = await AuthService().getCredentialFromLocal();
+      //     final UserEntity user = await AuthService().login(data);
+      //     emit(AuthSuccess(user));
+      //   } catch (e) {
+      //     emit(AuthFailed(e.toString()));
+      //   }
+      // }
 
       if (event is AuthUpdateUser) {
         try {

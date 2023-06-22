@@ -5,10 +5,11 @@ import 'package:e_wallet_mobile/ui/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+  OnboardingScreen({Key? key}) : super(key: key);
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
+
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
