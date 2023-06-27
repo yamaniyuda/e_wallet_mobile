@@ -11,10 +11,15 @@ TransactionDTO _$TransactionDTOFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int?,
       amount: json['amount'] as int?,
       createdAt: TransactionDTO._fromJson(json['created_at'] as String),
-    )..paymentMethod = json['payment_method'] == null
-        ? null
-        : PaymentMethodDTO.fromJson(
-            json['payment_method'] as Map<String, dynamic>);
+      paymentMethod: json['payment_method'] == null
+          ? null
+          : PaymentMethodDTO.fromJson(
+              json['payment_method'] as Map<String, dynamic>),
+      transactionType: json['transaction_type'] == null
+          ? null
+          : TransactionTypeDTO.fromJson(
+              json['transaction_type'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$TransactionDTOToJson(TransactionDTO instance) =>
     <String, dynamic>{
@@ -22,4 +27,5 @@ Map<String, dynamic> _$TransactionDTOToJson(TransactionDTO instance) =>
       'amount': instance.amount,
       'created_at': instance.createdAt?.toIso8601String(),
       'payment_method': instance.paymentMethod,
+      'transaction_type': instance.transactionType,
     };

@@ -1,3 +1,4 @@
+import 'package:e_wallet_mobile/data/data_resource/local/auth_data_source.dart';
 import 'package:e_wallet_mobile/data/data_resource/remote/user_data_source.dart';
 import 'package:e_wallet_mobile/data/dto/user_dto.dart';
 import 'package:e_wallet_mobile/data/mappers/user_mapper.dart';
@@ -10,12 +11,14 @@ class UserRepositoryImpl extends UserRepository {
   @override
   Future fetchData() async {
     try {
-      final UserEntity data = UserMapper().convert<UserDTO, UserEntity>(
-          await dataSource.fetchData()
-      );
+      late UserDTO? userDTO;
+
+      userDTO = await AuthDataSource().getAuth();
+      userDTO ??= await dataSource.fetchData();
+      final UserEntity data = UserMapper().convert<UserDTO, UserEntity>(userDTO);
       return data;
     } catch (e) {
-      return "Server Error.";
+      return null;
     }
   }
 
@@ -25,7 +28,22 @@ class UserRepositoryImpl extends UserRepository {
       final bool data = await dataSource.checkIsEmailExist(payload: email);
       return data;
     } catch (_) {
-      return false;
+      return true;
+    }
+  }
+
+  @override
+  Future<List<UserEntity>> fetchDataByUsername(String username) async {
+    try {
+      final List<UserDTO> remoteData = await dataSource.fetchDataList(username);
+      final List<UserEntity> data = List<UserEntity>.from(
+        remoteData.map(
+          (dto) => UserMapper().convert<UserDTO, UserEntity>(dto)
+        )
+      );
+      return data;
+    } catch (e) {
+      return <UserEntity>[];
     }
   }
 }

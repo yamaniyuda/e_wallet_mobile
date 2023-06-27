@@ -2,19 +2,21 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:e_wallet_mobile/config/route/route_controller.dart';
+import 'package:e_wallet_mobile/data/payloads/sign_up_payload.dart';
 import 'package:e_wallet_mobile/models/sign_up_form_model.dart';
 import 'package:e_wallet_mobile/shared/shared_method.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
 import 'package:e_wallet_mobile/ui/widgets/buttons.dart';
 import 'package:e_wallet_mobile/ui/widgets/forms.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../domain/entities/auth_entity.dart';
 import '../screen_entity.dart';
 
 class SignUpUploadProfileScreen extends StatefulWidget implements ScreenEntity {
-  final AuthRegisterEntity dataForm;
+  final SignUpPayload dataForm;
 
   SignUpUploadProfileScreen({
     Key? key,
@@ -32,7 +34,12 @@ class _SignUpUploadProfileScreenState extends State<SignUpUploadProfileScreen> {
 
   final TextEditingController _pinController = TextEditingController(text: "");
   XFile? _image;
-
+  
+  @override
+  void initState() {
+    super.initState();
+  }
+  
   bool _validate() {
     if (_pinController.text.length != 6 || _image == null) {
       return false;
@@ -52,11 +59,11 @@ class _SignUpUploadProfileScreenState extends State<SignUpUploadProfileScreen> {
             width: 155,
             margin: const EdgeInsets.only(top: 100, bottom: 100),
             decoration: const BoxDecoration(
-                image: DecorationImage(image: AssetImage("assets/images/img_logo_white.png"))
+              image: DecorationImage(image: AssetImage("assets/images/img_logo_white.png"))
             ),
           ),
           Text(
-            "Join Us to Unlock \n Your Growth",
+            "Join Us to Unlock \nYour Growth",
             style: blackTextStyle.copyWith(
                 fontSize: 20,
                 fontWeight: semiBold
@@ -86,11 +93,11 @@ class _SignUpUploadProfileScreenState extends State<SignUpUploadProfileScreen> {
                         shape: BoxShape.circle,
                         color: lightBackgroundColor,
                         image: _image == null
-                            ? null
-                            : DecorationImage(
-                            image: FileImage(
-                                File(_image!.path)
-                            )
+                          ? null
+                          : DecorationImage(
+                          image: FileImage(
+                              File(_image!.path)
+                          )
                         )
                     ),
                     child: _image != null ? null : Center(
@@ -111,6 +118,9 @@ class _SignUpUploadProfileScreenState extends State<SignUpUploadProfileScreen> {
                   type: TextInputType.number,
                   title: "Set PIN (6 digit number)",
                   controller: _pinController,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(6)
+                  ],
                 ),
                 const SizedBox(height: 30),
                 CustomFilledButton(
@@ -118,15 +128,15 @@ class _SignUpUploadProfileScreenState extends State<SignUpUploadProfileScreen> {
                   onPress: () {
                     if (_validate()) {
                       Navigator.pushNamed(
-                          context,
-                          RouteCollection.signUpUploadIdCard.name,
-                          arguments: SignUpFormModel(
-                              name: widget.dataForm.name,
-                              password: widget.dataForm.password,
-                              email: widget.dataForm.email,
-                              pin: _pinController.text,
-                              profilePicture: "data:image/png;base64,${base64Encode(File(_image!.path).readAsBytesSync())}"
-                          )
+                        context,
+                        RouteCollection.signUpUploadIdCard.name,
+                        arguments: SignUpPayload(
+                          name: widget.dataForm.name,
+                          password: widget.dataForm.password,
+                          email: widget.dataForm.email,
+                          pin: _pinController.text,
+                          profilePicture: "data:image/png;base64,${base64Encode(File(_image!.path).readAsBytesSync())}"
+                        )
                       );
                     } else {
                       showCustomSnackBar(context, "Isi semua field");

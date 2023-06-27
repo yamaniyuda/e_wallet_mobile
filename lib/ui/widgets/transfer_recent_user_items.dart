@@ -1,10 +1,10 @@
-import 'package:e_wallet_mobile/models/user_model.dart';
+import 'package:e_wallet_mobile/domain/entities/user_entity.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class TransferRecentUserItems extends StatelessWidget {
 
-  final UserModel user;
+  final UserEntity user;
 
   const TransferRecentUserItems({
     Key? key,

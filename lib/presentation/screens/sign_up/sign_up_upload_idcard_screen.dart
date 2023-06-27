@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:e_wallet_mobile/blocs/bloc/auth/auth_bloc.dart';
-import 'package:e_wallet_mobile/domain/entities/auth_entity.dart';
+import 'package:e_wallet_mobile/config/route/route_controller.dart';
+import 'package:e_wallet_mobile/data/payloads/sign_up_payload.dart';
+import 'package:e_wallet_mobile/presentation/blocs/auth/auth_bloc.dart';
+import 'package:e_wallet_mobile/presentation/screens/screen.dart';
 import 'package:e_wallet_mobile/shared/shared_method.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
 import 'package:e_wallet_mobile/ui/widgets/buttons.dart';
@@ -11,7 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class SignUpUploadIdCardScreen extends StatefulWidget {
-  final AuthRegisterEntity dataForm;
+  final SignUpPayload dataForm;
   const SignUpUploadIdCardScreen({
     Key? key,
     required this.dataForm
@@ -42,7 +44,14 @@ class _SignUpUploadIdCardScreenState extends State<SignUpUploadIdCardScreen> {
           }
 
           if (state is AuthSuccess) {
-            Navigator.of(context).pushReplacementNamed("/sign-up-success");
+            Navigator.of(context).pushReplacementNamed(
+              RouteCollection.successScreen.name,
+              arguments: SuccessScreenArguments(
+                title: "Anda Berhasil \nTerdaftar",
+                subTitle: "Grow your finance start \ntogether with us",
+                buttonText: "Get Started"
+              )
+            );
           }
         },
         builder: (context, state) {

@@ -5,7 +5,7 @@ class CheckEmailUseCase extends UseCase<UserRepositoryImpl, String> {
   CheckEmailUseCase() : super(UserRepositoryImpl());
 
   @override
-  Future call([String? params]) {
-    return repository.checkIsEmailExist(params!);
+  Future call([String? params]) async {
+    return await repository.checkIsEmailExist(params!);
   }
 }

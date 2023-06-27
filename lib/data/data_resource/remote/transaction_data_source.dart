@@ -2,6 +2,7 @@ import 'package:e_wallet_mobile/data/data_resource/remote/remote_data_source.dar
 import 'package:e_wallet_mobile/data/dto/transaction_dto.dart';
 import 'package:e_wallet_mobile/data/dto/transaction_top_up_dto.dart';
 import 'package:e_wallet_mobile/data/dto/transfer_history_dto.dart';
+import 'package:e_wallet_mobile/data/dto/user_dto.dart';
 import 'package:e_wallet_mobile/data/payloads/transaction_data_plan_payload.dart';
 import 'package:e_wallet_mobile/data/payloads/transaction_top_up_payload.dart';
 import 'package:e_wallet_mobile/data/payloads/transaction_transfer_payload.dart';
@@ -55,11 +56,11 @@ class TransactionDataSource extends RemoteDataSource {
     return response;
   }
 
-  Future<List<TransferHistoryDTO>> fetchTransferHistory({ Map<String, dynamic> queryParameters = const { "limit": 10 } }) async {
-    final List<TransferHistoryDTO> response = await dioClient.getRequest(
+  Future<List<UserDTO>> fetchTransferHistory({ Map<String, dynamic> queryParameters = const { "limit": 10 } }) async {
+    final List<UserDTO> response = await dioClient.getRequest(
       "api/transfer_histories",
-      converter: (data) => List<TransferHistoryDTO>.from(
-        data["data"].map((x) => TransferHistoryDTO.fromJson(x))
+      converter: (data) => List<UserDTO>.from(
+        data["data"].map((x) => UserDTO.fromJson(x))
       ),
       queryParameters: queryParameters
     );

@@ -4,6 +4,6 @@ import 'package:e_wallet_mobile/data/dto/dto.dart';
 abstract class RemoteDataSource {
   final DioClient _dioClient;
 
-  RemoteDataSource(): _dioClient = DioClient();
+  RemoteDataSource(): _dioClient = DioClient()..init();
   DioClient get dioClient => _dioClient;
 }

@@ -12,7 +12,11 @@ class AuthDataSource extends LocalDataSource {
       iOptions: getIosOptions()
     );
 
-    final String? dataLocal = await storage.read(key: _keyAuth);
+    final String? dataLocal = await storage.read(
+      key: _keyAuth,
+      aOptions: getAndroidOptions(),
+      iOptions: getIosOptions()
+    );
     final UserDTO dataStore = UserDTO.deserialize(dataLocal!);
 
     return dataStore;
@@ -27,10 +31,23 @@ class AuthDataSource extends LocalDataSource {
     return storeAuth(data);
   }
 
-  Future<UserDTO> getAuth() async {
-    final String? dataLocal = await storage.read(key: _keyAuth);
-    final UserDTO dataStore = UserDTO.deserialize(dataLocal!);
+  Future<UserDTO?> getAuth() async {
+    try {
+      final String? dataLocal = await storage.read(
+        key: _keyAuth,
+        aOptions: getAndroidOptions(),
+        iOptions: getIosOptions()
+      );
+      final UserDTO dataStore = UserDTO.deserialize(dataLocal!);
 
-    return dataStore;
+      return dataStore;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  Future<String> getToken() async {
+    final UserDTO? data = await getAuth();
+    return "Bearer ${data?.token}";
   }
 }

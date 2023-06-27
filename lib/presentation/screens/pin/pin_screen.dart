@@ -1,4 +1,4 @@
-import 'package:e_wallet_mobile/blocs/bloc/auth/auth_bloc.dart';
+import 'package:e_wallet_mobile/presentation/blocs/auth/auth_bloc.dart';
 import 'package:e_wallet_mobile/presentation/screens/screen_entity.dart';
 import 'package:e_wallet_mobile/shared/shared_method.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';

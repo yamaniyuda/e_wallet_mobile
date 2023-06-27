@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:e_wallet_mobile/config/constants.dart';
+import 'package:e_wallet_mobile/domain/use_cases/auth/get_token_use_case.dart';
 
 part 'dio_interceptor.dart';
 part 'dio_cache_interceptor.dart';
@@ -28,6 +29,7 @@ class DioClient {
         }
       )
     );
+    addInterceptor();
     return dio;
   }
 

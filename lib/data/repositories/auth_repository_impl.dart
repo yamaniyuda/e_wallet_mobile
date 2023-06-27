@@ -26,34 +26,31 @@ class AuthRepositoryImpl extends AuthRepository {
     }
   }
 
-
   @override
-  Future<bool> signIn(SignInPayload payload) async {
+  Future<UserEntity?> signIn(SignInPayload payload) async {
     try {
       final UserDTO data = await remoteDataSource.login(payload: payload);
       await localDataSource.storeAuth(data);
-      return true;
-    } catch (_) {
-      return false;
+      return mapper.convert<UserDTO, UserEntity>(data);
+    } catch (e, p) {
+      return null;
     }
   }
 
   @override
-  Future<bool> signUp(SignUpPayload payload) async {
+  Future<UserEntity?> signUp(SignUpPayload payload) async {
     try {
       final UserDTO data = await remoteDataSource.register(payload: payload);
       await localDataSource.storeAuth(data);
-      return true;
+      return mapper.convert<UserDTO, UserEntity>(data);
     } catch (e) {
-      return false;
+      return null;
     }
   }
 
   @override
-  Future<UserEntity> getToken() async {
-    final UserEntity data = mapper.convert<UserDTO, UserEntity>(
-      await localDataSource.getAuth()
-    );
-    return data;
+  Future<String> getToken() async {
+    final String token = await localDataSource.getToken();
+    return token;
   }
 }

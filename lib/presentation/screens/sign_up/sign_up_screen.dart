@@ -1,7 +1,7 @@
-import 'package:e_wallet_mobile/blocs/bloc/auth/auth_bloc.dart';
 import 'package:e_wallet_mobile/config/route/route_controller.dart';
+import 'package:e_wallet_mobile/data/payloads/sign_up_payload.dart';
 import 'package:e_wallet_mobile/domain/entities/auth_entity.dart';
-import 'package:e_wallet_mobile/models/sign_up_form_model.dart';
+import 'package:e_wallet_mobile/presentation/blocs/auth/auth_bloc.dart';
 import 'package:e_wallet_mobile/presentation/screens/screen_entity.dart';
 import 'package:e_wallet_mobile/shared/shared_method.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
@@ -48,7 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Navigator.pushNamed(
               context,
               RouteCollection.signUpUploadProfileScreen.name,
-              arguments: AuthRegisterEntity(
+              arguments: SignUpPayload(
                 name: _nameController.text,
                 email: _emailController.text,
                 password: _passwordController.text

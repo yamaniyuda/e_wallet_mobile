@@ -1,5 +1,6 @@
 import 'package:e_wallet_mobile/shared/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomFormsField extends StatelessWidget {
   final String title;
@@ -7,11 +8,15 @@ class CustomFormsField extends StatelessWidget {
   final TextEditingController? controller;
   final bool? isShowTitle;
   final TextInputType? type;
+  final List<TextInputFormatter>? inputFormatters;
+  final String? Function(String?)? validator;
   final Function(String)? onFieldSubmitted;
 
   const CustomFormsField({
     Key? key,
     required this.title,
+    this.inputFormatters,
+    this.validator,
     this.obscureText = false,
     this.isShowTitle = true,
     this.controller,
@@ -35,6 +40,8 @@ class CustomFormsField extends StatelessWidget {
           obscureText: obscureText,
           keyboardType: type,
           controller: controller,
+          validator: validator,
+          inputFormatters: inputFormatters,
           onFieldSubmitted: onFieldSubmitted,
           decoration: InputDecoration(
               hintText: isShowTitle == false ? title : null,

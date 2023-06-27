@@ -18,7 +18,7 @@ class AuthCheckEmail extends AuthEvent {
 
 /// For SignUp new user
 class AuthRegister extends AuthEvent  {
-  final AuthRegisterEntity data;
+  final SignUpPayload data;
 
   const AuthRegister(this.data);
 
@@ -28,7 +28,7 @@ class AuthRegister extends AuthEvent  {
 
 /// For SignIn user
 class AuthLogin extends AuthEvent  {
-  final SignInFormModel data;
+  final SignInPayload data;
 
   const AuthLogin(this.data);
 

@@ -1,10 +1,11 @@
+import 'package:e_wallet_mobile/domain/entities/user_entity.dart';
 import 'package:e_wallet_mobile/models/user_model.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class HomeUserItems extends StatefulWidget {
 
-  final UserModel user;
+  final UserEntity user;
 
   const HomeUserItems({
     Key? key,

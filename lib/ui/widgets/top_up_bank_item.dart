@@ -1,16 +1,17 @@
+import 'package:e_wallet_mobile/domain/entities/payment_method_entity.dart';
 import 'package:e_wallet_mobile/models/payment_method_model.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class TopUpBankItem extends StatelessWidget {
 
-  final PaymentMethodModel paymentMethodModel;
+  final PaymentMethodEntity paymentMethodEntity;
   final String date;
   final bool? isSelected;
 
   const TopUpBankItem({
     Key? key,
-    required this.paymentMethodModel,
+    required this.paymentMethodEntity,
     required this.date,
     this.isSelected = false
   }) : super(key: key);
@@ -31,7 +32,7 @@ class TopUpBankItem extends StatelessWidget {
       child: Row(
         children: [
           Image.network(
-            paymentMethodModel.thumbnail!,
+            paymentMethodEntity.thumbnail!,
             height: 30,
           ),
           const Spacer(),
@@ -39,7 +40,7 @@ class TopUpBankItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                paymentMethodModel.name.toString(),
+                paymentMethodEntity.name.toString(),
                 style: blackTextStyle.copyWith(
                   fontSize: 16,
                   fontWeight: medium

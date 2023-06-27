@@ -22,6 +22,6 @@ String formatCurrency(num number, { String? symbol }) {
 }
 
 Future<XFile?> selectImage() async {
-  XFile? selectImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+  XFile? selectImage = await ImagePicker().pickImage(source: ImageSource.camera);
   return selectImage;
 }

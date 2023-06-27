@@ -38,7 +38,7 @@ class UserDataSource extends RemoteDataSource {
 
   Future<bool> checkIsEmailExist({ required String payload }) async {
     final bool response = await dioClient.postRequest(
-      "is-email-exist",
+      "api/is-email-exist",
       converter: (data) => data["is_email_exist"],
       data: { "email": payload }
     );

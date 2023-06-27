@@ -1,4 +1,5 @@
 import 'package:e_wallet_mobile/data/dto/dto.dart';
+import 'package:e_wallet_mobile/data/dto/transaction_type_dto.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:e_wallet_mobile/data/dto/payment_method_dto.dart';
 
@@ -18,10 +19,15 @@ class TransactionDTO implements DTO {
   @JsonKey(name: "payment_method")
   late PaymentMethodDTO? paymentMethod;
 
+  @JsonKey(name: "transaction_type")
+  late TransactionTypeDTO? transactionType;
+
   TransactionDTO({
     this.id,
     this.amount,
-    this.createdAt
+    this.createdAt,
+    this.paymentMethod,
+    this.transactionType
   });
 
   static DateTime? _fromJson(String value) {

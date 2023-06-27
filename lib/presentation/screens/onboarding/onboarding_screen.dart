@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_wallet_mobile/config/route/route_controller.dart';
 import 'package:e_wallet_mobile/presentation/screens/screen_entity.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
-import 'package:e_wallet_mobile/ui/screens/sign_in_screen.dart';
 import 'package:e_wallet_mobile/ui/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 
@@ -93,7 +92,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       CustomFilledButton(
                         title: "Get Started",
                         onPress: () {
-                          Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            RouteCollection.homeScreen.name,
+                            (route) => false
+                          );
                         },
                       ),
                       const SizedBox(height: 20),

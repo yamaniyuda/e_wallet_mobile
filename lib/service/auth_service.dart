@@ -25,27 +25,27 @@ class AuthService {
     }
   }
 
-  Future<UserEntity> register(AuthRegisterEntity data) async {
-    try {
-      final res = await http.post(
-        Uri.parse("$baseUrl/register"),
-        body: data.toJson()
-      );
-
-      if (res.statusCode == 200) {
-        AuthEntity user = UserModel.fromJson(jsonDecode(res.body));
-        user.copyWith(
-          password: data.password
-        );
-        await storeCredentialToLocal(user);
-        return user;
-      } else {
-        throw jsonDecode(res.body)["message"];
-      }
-    } catch (e, stacktrace) {
-      rethrow;
-    }
-  }
+  // Future<AuthEntity> register(AuthRegisterEntity data) async {
+  //   try {
+  //     final res = await http.post(
+  //       Uri.parse("$baseUrl/register"),
+  //       body: data.toJson()
+  //     );
+  //
+  //     if (res.statusCode == 200) {
+  //       AuthEntity user = UserModel.fromJson(jsonDecode(res.body)) as AuthEntity;
+  //       user.copyWith(
+  //         password: data.password
+  //       );
+  //       await storeCredentialToLocal(user as UserModel);
+  //       return user;
+  //     } else {
+  //       throw jsonDecode(res.body)["message"];
+  //     }
+  //   } catch (e, stacktrace) {
+  //     rethrow;
+  //   }
+  // }
 
   Future<UserModel> login(SignInFormModel data) async {
     try {
@@ -106,8 +106,6 @@ class AuthService {
     try {
       const storage = FlutterSecureStorage();
       Map<String, String> values = await storage.readAll();
-
-      print(values);
 
       if (values["email"] == null || values["token"] == null || values["password"] == null) {
         throw "Authenticated";

@@ -1,11 +1,11 @@
-import 'package:e_wallet_mobile/models/transaction_model.dart';
+import 'package:e_wallet_mobile/domain/entities/transaction_entity.dart';
 import 'package:e_wallet_mobile/shared/shared_method.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class HomeLatestTransaction extends StatelessWidget {
-  final TransactionModel transaction;
+  final TransactionEntity transaction;
   final EdgeInsets? margin;
 
   const HomeLatestTransaction({
@@ -16,6 +16,8 @@ class HomeLatestTransaction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    print(transaction.transactionType);
     return Container(
       margin: margin ?? const EdgeInsets.only(bottom: 18),
       child: Row(
