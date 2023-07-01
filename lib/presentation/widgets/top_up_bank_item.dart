@@ -1,15 +1,17 @@
-import 'package:e_wallet_mobile/models/operator_card_model.dart';
+import 'package:e_wallet_mobile/domain/entities/payment_method_entity.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
 import 'package:flutter/material.dart';
 
-class DataProviderItem extends StatelessWidget {
+class TopUpBankItem extends StatelessWidget {
 
-  final OperatorCardModel operatorCardModel;
+  final PaymentMethodEntity paymentMethodEntity;
+  final String date;
   final bool? isSelected;
 
-  const DataProviderItem({
+  const TopUpBankItem({
     Key? key,
-    required this.operatorCardModel,
+    required this.paymentMethodEntity,
+    required this.date,
     this.isSelected = false
   }) : super(key: key);
 
@@ -19,17 +21,17 @@ class DataProviderItem extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 18),
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
-          color: whiteColor,
-          border: Border.all(
-              width: 2,
-              color: isSelected == true ? blueColor : whiteColor
-          ),
-          borderRadius: BorderRadius.circular(20)
+        color: whiteColor,
+        border: Border.all(
+          width: 2,
+          color: isSelected == true ? blueColor : whiteColor
+        ),
+        borderRadius: BorderRadius.circular(20)
       ),
       child: Row(
         children: [
           Image.network(
-            operatorCardModel.thumbnail!.toString(),
+            paymentMethodEntity.thumbnail!,
             height: 30,
           ),
           const Spacer(),
@@ -37,15 +39,15 @@ class DataProviderItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                operatorCardModel.name!.toString(),
+                paymentMethodEntity.name.toString(),
                 style: blackTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: medium
+                  fontSize: 16,
+                  fontWeight: medium
                 ),
               ),
               const SizedBox(height: 2),
               Text(
-                operatorCardModel.status.toString(),
+                "50 mins",
                 style: grayTextStyle.copyWith(
                   fontSize: 12,
                 ),

@@ -3,11 +3,10 @@ import 'dart:io';
 
 import 'package:e_wallet_mobile/config/route/route_controller.dart';
 import 'package:e_wallet_mobile/data/payloads/sign_up_payload.dart';
-import 'package:e_wallet_mobile/models/sign_up_form_model.dart';
 import 'package:e_wallet_mobile/shared/shared_method.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
-import 'package:e_wallet_mobile/ui/widgets/buttons.dart';
-import 'package:e_wallet_mobile/ui/widgets/forms.dart';
+import 'package:e_wallet_mobile/presentation/widgets/buttons.dart';
+import 'package:e_wallet_mobile/presentation/widgets/forms.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';

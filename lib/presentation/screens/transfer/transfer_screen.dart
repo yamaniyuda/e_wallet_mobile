@@ -1,13 +1,12 @@
 import 'package:e_wallet_mobile/config/route/route_controller.dart';
+import 'package:e_wallet_mobile/data/payloads/transaction_transfer_payload.dart';
 import 'package:e_wallet_mobile/domain/entities/user_entity.dart';
-import 'package:e_wallet_mobile/models/transfer_form_model.dart';
-import 'package:e_wallet_mobile/models/user_model.dart';
 import 'package:e_wallet_mobile/presentation/blocs/user/user_bloc.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
-import 'package:e_wallet_mobile/ui/widgets/buttons.dart';
-import 'package:e_wallet_mobile/ui/widgets/forms.dart';
-import 'package:e_wallet_mobile/ui/widgets/transfer_recent_user_items.dart';
-import 'package:e_wallet_mobile/ui/widgets/transfer_result_user_items.dart';
+import 'package:e_wallet_mobile/presentation/widgets/buttons.dart';
+import 'package:e_wallet_mobile/presentation/widgets/forms.dart';
+import 'package:e_wallet_mobile/presentation/widgets/transfer_recent_user_items.dart';
+import 'package:e_wallet_mobile/presentation/widgets/transfer_result_user_items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -88,11 +87,11 @@ class _TransferScreenState extends State<TransferScreen> {
           title: "Continue",
           onPress: () {
             Navigator.pushNamed(
-                context,
-                RouteCollection.topUpAmountScreen.name,
-                arguments: TransferFormModel(
-                  sendTo: selectedUser!.username,
-                )
+              context,
+              RouteCollection.transferAmountScreen.name,
+              arguments: TransactionTransferPayload(
+                sendTo: selectedUser!.username,
+              )
             );
           },
         ),
@@ -109,8 +108,8 @@ class _TransferScreenState extends State<TransferScreen> {
           Text(
             "Search",
             style: blackTextStyle.copyWith(
-                fontSize: 16,
-                fontWeight: semiBold
+              fontSize: 16,
+              fontWeight: semiBold
             ),
           ),
           const SizedBox(height: 14),
@@ -157,18 +156,18 @@ class _TransferScreenState extends State<TransferScreen> {
 
                   if (state is UserSuccess) {
                     return Wrap(
-                        spacing: 17,
-                        runSpacing: 17,
-                        children: state.users.map((e) {
-                          return GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  selectedUser = e;
-                                });
-                              },
-                              child: TransferResultUserItems(user: e, isSelected: e.id == selectedUser?.id)
-                          );
-                        }).toList()
+                      spacing: 17,
+                      runSpacing: 17,
+                      children: state.users.map((e) {
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedUser = e;
+                            });
+                          },
+                          child: TransferResultUserItems(user: e, isSelected: e.id == selectedUser?.id)
+                        );
+                      }).toList()
                     );
                   }
 

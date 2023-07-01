@@ -8,3 +8,4 @@ export 'home/home.dart';
 export 'profile/profile.dart';
 export 'top_up/top_up.dart';
 export 'transfer/transfer.dart';
+export 'data/data.dart';

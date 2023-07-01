@@ -5,8 +5,8 @@ import 'package:e_wallet_mobile/presentation/blocs/auth/auth_bloc.dart';
 import 'package:e_wallet_mobile/presentation/screens/screen_entity.dart';
 import 'package:e_wallet_mobile/shared/shared_method.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
-import 'package:e_wallet_mobile/ui/widgets/buttons.dart';
-import 'package:e_wallet_mobile/ui/widgets/forms.dart';
+import 'package:e_wallet_mobile/presentation/widgets/buttons.dart';
+import 'package:e_wallet_mobile/presentation/widgets/forms.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

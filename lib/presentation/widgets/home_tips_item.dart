@@ -1,5 +1,4 @@
 import 'package:e_wallet_mobile/domain/entities/tip_entity.dart';
-import 'package:e_wallet_mobile/models/tip_model.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';

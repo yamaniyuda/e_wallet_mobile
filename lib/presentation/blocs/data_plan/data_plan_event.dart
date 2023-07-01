@@ -9,7 +9,7 @@ abstract class DataPlanEvent extends Equatable {
 }
 
 class DataPlanPost extends DataPlanEvent {
-  final DataPlanFormModel data;
+  final TransactionDataPlanPayload data;
   const DataPlanPost(this.data);
 
   @override

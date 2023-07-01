@@ -18,8 +18,8 @@ enum RouteCollection {
   topUpAmountScreen,
   transferScreen,
   transferAmountScreen,
-  // dataProviderScreen,
-  // dataPackage
+  dataProviderScreen,
+  dataPackageScreen
 }
 
 extension RouteCollectionExtension on RouteCollection {
@@ -54,6 +54,9 @@ extension RouteCollectionExtension on RouteCollection {
         return const screen.TransferScreen();
       case RouteCollection.transferAmountScreen:
         return screen.TransferAmountScreen(payload: arguments as TransactionTransferPayload);
-    }
+      case RouteCollection.dataProviderScreen:
+        return const screen.DataProviderScreen();
+      case RouteCollection.dataPackageScreen:
+        return screen.DataPackageScreen(args: arguments as OperatorCardEntity);    }
   }
 }

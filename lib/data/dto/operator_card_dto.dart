@@ -19,7 +19,7 @@ class OperatorCardDTO implements DTO {
   late String? thumbnail;
 
   @JsonKey(name: "data_plans")
-  late DataPlanDTO? dataPlans;
+  late List<DataPlanDTO>? dataPlans;
 
   OperatorCardDTO({
     this.id,

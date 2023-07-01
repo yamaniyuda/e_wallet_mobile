@@ -5,6 +5,7 @@ import 'package:e_wallet_mobile/data/dto/user_dto.dart';
 import 'package:e_wallet_mobile/data/mappers/transaction_mapper.dart';
 import 'package:e_wallet_mobile/data/mappers/transaction_top_up_mapper.dart';
 import 'package:e_wallet_mobile/data/mappers/user_mapper.dart';
+import 'package:e_wallet_mobile/data/payloads/transaction_data_plan_payload.dart';
 import 'package:e_wallet_mobile/data/payloads/transaction_top_up_payload.dart';
 import 'package:e_wallet_mobile/data/payloads/transaction_transfer_payload.dart';
 import 'package:e_wallet_mobile/domain/entities/transaction_entity.dart';
@@ -70,6 +71,16 @@ class TransactionRepositoryImpl extends TransactionRepository {
       final bool data = await dataSource.transfer(payload: payload);
       return data;
     } catch (e) {
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> dataPlan({required TransactionDataPlanPayload payload}) async {
+    try {
+      final bool data  = await dataSource.dataPlan(payload: payload);
+      return data;
+    } catch (_) {
       return false;
     }
   }

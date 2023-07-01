@@ -12,9 +12,9 @@ OperatorCardDTO _$OperatorCardDTOFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       thumbnail: json['thumbnail'] as String?,
       status: json['status'] as String?,
-      dataPlans: json['data_plans'] == null
-          ? null
-          : DataPlanDTO.fromJson(json['data_plans'] as Map<String, dynamic>),
+      dataPlans: (json['data_plans'] as List<dynamic>?)
+          ?.map((e) => DataPlanDTO.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$OperatorCardDTOToJson(OperatorCardDTO instance) =>

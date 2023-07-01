@@ -16,8 +16,6 @@ class HomeLatestTransaction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    print(transaction.transactionType);
     return Container(
       margin: margin ?? const EdgeInsets.only(bottom: 18),
       child: Row(

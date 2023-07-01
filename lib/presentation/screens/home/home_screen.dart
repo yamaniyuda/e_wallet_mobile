@@ -1,5 +1,5 @@
 import 'package:e_wallet_mobile/config/route/route_controller.dart';
-import 'package:e_wallet_mobile/models/transfer_form_model.dart';
+import 'package:e_wallet_mobile/data/payloads/transaction_transfer_payload.dart';
 import 'package:e_wallet_mobile/presentation/blocs/auth/auth_bloc.dart';
 import 'package:e_wallet_mobile/presentation/blocs/tip/tip_bloc.dart';
 import 'package:e_wallet_mobile/presentation/blocs/transaction/transaction_bloc.dart';
@@ -7,10 +7,10 @@ import 'package:e_wallet_mobile/presentation/blocs/user/user_bloc.dart';
 import 'package:e_wallet_mobile/presentation/screens/screen_entity.dart';
 import 'package:e_wallet_mobile/shared/shared_method.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
-import 'package:e_wallet_mobile/ui/widgets/home_latest_transaction.dart';
-import 'package:e_wallet_mobile/ui/widgets/home_service_items.dart';
-import 'package:e_wallet_mobile/ui/widgets/home_tips_item.dart';
-import 'package:e_wallet_mobile/ui/widgets/home_user_items.dart';
+import 'package:e_wallet_mobile/presentation/widgets/home_latest_transaction.dart';
+import 'package:e_wallet_mobile/presentation/widgets/home_service_items.dart';
+import 'package:e_wallet_mobile/presentation/widgets/home_tips_item.dart';
+import 'package:e_wallet_mobile/presentation/widgets/home_user_items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -299,7 +299,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: BlocBuilder<TransactionBloc, TransactionState>(
         builder: (context, state) {
           if (state is TransactionSuccess && state.transactions.isNotEmpty) {
-            print(state.transactions);
             return Container(
               margin: const EdgeInsets.only(top: 39),
               child: Column(
@@ -354,8 +353,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             .map((e) => GestureDetector(
                             onTap: () {
                               Navigator.of(context)
-                                  .pushNamed("/transfer-amount",
-                                  arguments: TransferFormModel(
+                                  .pushNamed(RouteCollection.transferAmountScreen.name,
+                                  arguments: TransactionTransferPayload(
                                     sendTo: e.username,
                                   ));
                             },
@@ -450,16 +449,16 @@ class MoreDialog extends StatelessWidget {
                       iconUrl: "assets/icons/ic_smartphone.png",
                       title: "Data",
                       onTap: () =>
-                          Navigator.of(context).pushNamed("/data-provider")),
-                  HomeServiceItems(
+                          Navigator.of(context).pushNamed(RouteCollection.dataProviderScreen.name)),
+                  const HomeServiceItems(
                       iconUrl: "assets/icons/ic_droplet.png", title: "Water"),
-                  HomeServiceItems(
+                  const HomeServiceItems(
                       iconUrl: "assets/icons/ic_twitch.png", title: "Stream"),
-                  HomeServiceItems(
+                  const HomeServiceItems(
                       iconUrl: "assets/icons/ic_tv.png", title: "Movie"),
-                  HomeServiceItems(
+                  const HomeServiceItems(
                       iconUrl: "assets/icons/ic_coffee.png", title: "Food"),
-                  HomeServiceItems(
+                  const HomeServiceItems(
                       iconUrl: "assets/icons/ic_globe.png", title: "Travel"),
                 ],
               ),

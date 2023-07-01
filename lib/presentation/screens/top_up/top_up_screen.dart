@@ -1,13 +1,11 @@
 import 'package:e_wallet_mobile/config/route/route_controller.dart';
 import 'package:e_wallet_mobile/data/payloads/transaction_top_up_payload.dart';
 import 'package:e_wallet_mobile/domain/entities/payment_method_entity.dart';
-import 'package:e_wallet_mobile/models/payment_method_model.dart';
-import 'package:e_wallet_mobile/models/top_up_form_model.dart';
 import 'package:e_wallet_mobile/presentation/blocs/auth/auth_bloc.dart';
 import 'package:e_wallet_mobile/presentation/blocs/payment_method/payment_method_bloc.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
-import 'package:e_wallet_mobile/ui/widgets/buttons.dart';
-import 'package:e_wallet_mobile/ui/widgets/top_up_bank_item.dart';
+import 'package:e_wallet_mobile/presentation/widgets/buttons.dart';
+import 'package:e_wallet_mobile/presentation/widgets/top_up_bank_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

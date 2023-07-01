@@ -1,32 +1,32 @@
 import 'dart:math';
 
 class TransactionDataPlanPayload {
-  final int? id;
+  final int? dataPlanId;
   final String? phoneNumber;
   final int? pin;
 
   TransactionDataPlanPayload({
     this.pin,
-    this.id,
+    this.dataPlanId,
     this.phoneNumber
   });
 
   Map<String, dynamic> toJson() {
     return {
-      "id": id,
+      "data_plan_id": dataPlanId,
       "phone_number": phoneNumber,
       "pin": pin
     };
   }
 
   TransactionDataPlanPayload copyWith({
-    int? id,
+    int? dataPlanId,
     String? phoneNumber,
     int? pin
   }) {
     return TransactionDataPlanPayload(
       pin: pin ?? this.pin,
-      id: id ?? this.id,
+      dataPlanId: dataPlanId ?? this.dataPlanId,
       phoneNumber: phoneNumber ?? this.phoneNumber
     );
   }

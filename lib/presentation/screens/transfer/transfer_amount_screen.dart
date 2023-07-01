@@ -1,11 +1,10 @@
 import 'package:e_wallet_mobile/config/route/route_controller.dart';
 import 'package:e_wallet_mobile/data/payloads/transaction_transfer_payload.dart';
-import 'package:e_wallet_mobile/models/transfer_form_model.dart';
 import 'package:e_wallet_mobile/presentation/blocs/auth/auth_bloc.dart';
 import 'package:e_wallet_mobile/presentation/blocs/transfer/transfer_bloc.dart';
 import 'package:e_wallet_mobile/shared/shared_method.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
-import 'package:e_wallet_mobile/ui/widgets/buttons.dart';
+import 'package:e_wallet_mobile/presentation/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -195,7 +194,7 @@ class _TransferAmountScreenState extends State<TransferAmountScreen> {
                 CustomFilledButton(
                   title: "Continue",
                   onPress: () async {
-                    if (await Navigator.pushNamed(context, "/pin") == true) {
+                    if (await Navigator.pushNamed(context, RouteCollection.pinScreen.name) == true) {
                       final authState = context.read<AuthBloc>().state;
                       String pin = "";
 

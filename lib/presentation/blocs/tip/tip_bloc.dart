@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:e_wallet_mobile/domain/entities/tip_entity.dart';
 import 'package:e_wallet_mobile/domain/use_cases/tip/get_tip_use_case.dart';
-import 'package:e_wallet_mobile/models/tip_model.dart';
-import 'package:e_wallet_mobile/service/tip_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 

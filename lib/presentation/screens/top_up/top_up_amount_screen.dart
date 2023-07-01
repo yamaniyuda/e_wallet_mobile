@@ -5,7 +5,7 @@ import 'package:e_wallet_mobile/presentation/blocs/top_up/top_up_bloc.dart';
 import 'package:e_wallet_mobile/shared/shared_method.dart';
 import 'package:flutter/material.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
-import 'package:e_wallet_mobile/ui/widgets/buttons.dart';
+import 'package:e_wallet_mobile/presentation/widgets/buttons.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -195,9 +195,6 @@ class _TopUpAmountScreenState extends State<TopUpAmountScreen> {
                       if (authState is AuthSuccess) {
                         pin = authState.user.pin!;
                       }
-
-
-                      print("masuk is");
                       context.read<TopUpBloc>().add(TopUpPost(widget.payload.copyWith(
                           pin: int.parse(pin),
                           amount: int.parse(_controller.text.replaceAll(".", ""))

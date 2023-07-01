@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:e_wallet_mobile/domain/entities/payment_method_entity.dart';
 import 'package:e_wallet_mobile/domain/use_cases/payment_method/fetch_data_use_case.dart';
-import 'package:e_wallet_mobile/models/payment_method_model.dart';
-import 'package:e_wallet_mobile/service/payment_method_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 

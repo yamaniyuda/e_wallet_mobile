@@ -14,10 +14,14 @@ class DataPlanDTO implements DTO {
   @JsonKey(name: "operator_card_id")
   late int? operatorCardId;
 
+  @JsonKey(name: "price")
+  late int? price;
+
   DataPlanDTO({
     this.id,
     this.name,
-    this.operatorCardId
+    this.operatorCardId,
+    this.price
   });
 
   factory DataPlanDTO.fromJson(Map<String, dynamic> json) {

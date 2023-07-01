@@ -3,6 +3,7 @@ import 'package:e_wallet_mobile/data/payloads/sign_up_payload.dart';
 import 'package:e_wallet_mobile/data/payloads/transaction_top_up_payload.dart';
 import 'package:e_wallet_mobile/data/payloads/transaction_transfer_payload.dart';
 import 'package:e_wallet_mobile/domain/entities/auth_entity.dart';
+import 'package:e_wallet_mobile/domain/entities/operator_card_entity.dart';
 import 'package:e_wallet_mobile/presentation/screens/screen.dart' as screen;
 import 'package:e_wallet_mobile/presentation/screens/success/success.dart';
 import 'package:flutter/material.dart';

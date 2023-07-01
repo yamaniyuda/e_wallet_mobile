@@ -21,7 +21,7 @@ class OperatorCardFailed extends OperatorCardState {
 }
 
 class OperatorCardSuccess extends OperatorCardState {
-  final List<OperatorCardModel> operatorCards;
+  final List<OperatorCardEntity> operatorCards;
   const OperatorCardSuccess(this.operatorCards);
 
   @override

@@ -6,7 +6,6 @@ import 'package:e_wallet_mobile/domain/use_cases/auth/check_email_use_case.dart'
 import 'package:e_wallet_mobile/domain/use_cases/auth/sign_in_use_case.dart';
 import 'package:e_wallet_mobile/domain/use_cases/auth/sign_up_use_case.dart';
 import 'package:e_wallet_mobile/domain/use_cases/user/get_current_user_use_case.dart';
-import 'package:e_wallet_mobile/models/user_update_form_model.dart';
 import 'package:equatable/equatable.dart';
 
 part 'auth_event.dart';
@@ -19,6 +18,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthGetCurrentUser>(_getCurrentUser);
     on<AuthRegister>(_singUp);
     on<AuthLogin>(_signIn);
+    on<AuthUpdateBalance>(_authUpdateBalance);
   }
 
   Future<void> _checkEmail(AuthCheckEmail event, Emitter emit) async {
@@ -68,6 +68,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     } catch (e) {
       emit(AuthFailed(e.toString()));
+    }
+  }
+
+  Future<void> _authUpdateBalance(AuthUpdateBalance event, Emitter emit) async {
+    if (state is AuthSuccess) {
+      final currentUser = (state as AuthSuccess).user;
+      final updateUser = (state as AuthSuccess).user.copyWith(
+          balance: currentUser.balance! + event.amount
+      );
+      emit(AuthSuccess(updateUser));
     }
   }
 }

@@ -6,7 +6,7 @@ class OperatorCardEntity extends Equatable {
   late String? name;
   late String? status;
   late String? thumbnail;
-  late DataPlanEntity? dataPlans;
+  late List<DataPlanEntity>? dataPlans;
 
   OperatorCardEntity({
     this.id,
@@ -27,14 +27,14 @@ class OperatorCardEntity extends Equatable {
     String? name,
     String? status,
     String? thumbnail,
-    DataPlanEntity? dataPlans
+    List<DataPlanEntity>? dataPlans
   }) {
     return OperatorCardEntity(
       id: id ?? this.id,
       name: name ?? this.name,
       status: status ?? this.status,
       thumbnail: thumbnail ?? this.thumbnail,
-      dataPlans: dataPlans ?? this.dataPlans
+      dataPlans: dataPlans ?? this.dataPlans,
     );
   }
 }

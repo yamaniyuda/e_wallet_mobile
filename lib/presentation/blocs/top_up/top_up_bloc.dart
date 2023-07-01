@@ -15,12 +15,10 @@ class TopUpBloc extends Bloc<TopUpEvent, TopUpState> {
 
   Future<void> _topUp(TopUpPost event, Emitter emit) async {
     try {
-      print("masuk sini");
       emit(TopUpLoading());
       final redirectUrl = await TopUpUseCase().call(event.data);
       emit(TopUpSuccess(redirectUrl!.redirectUrl!));
     } catch (e,f) {
-      print(f);
       rethrow;
     }
   }

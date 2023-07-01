@@ -1,11 +1,11 @@
-import 'package:e_wallet_mobile/models/data_plan_model.dart';
+import 'package:e_wallet_mobile/domain/entities/data_plan_entity.dart';
 import 'package:e_wallet_mobile/shared/shared_method.dart';
 import 'package:e_wallet_mobile/shared/theme.dart';
 import 'package:flutter/material.dart';
 
 class PackageItem extends StatelessWidget {
 
-  final DataPlanModel dataPlanModel;
+  final DataPlanEntity dataPlanModel;
   final bool isSelected;
 
   const PackageItem({
